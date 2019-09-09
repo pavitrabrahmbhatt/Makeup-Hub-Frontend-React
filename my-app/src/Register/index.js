@@ -23,7 +23,7 @@ class Register extends Component {
     // data.append('file', this.state.image);
     // data.append('username', this.state.username);
 
-    const registerCall = this.props.register(this.state);
+    this.props.register(this.state);
 
     // registerCall.then((data) => {
     //   console.log(data)
@@ -34,9 +34,13 @@ class Register extends Component {
     //     }
     // })
   }
+
+
   render(){
+    console.log("register");
+    // return <h1>Register</h1>
     return (
-      <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
+      <Grid textAlign='center'>
         <Grid.Column style={{maxWidth: 450}}>
           <Header as='h2' textAlign='center'>
             Register
@@ -48,17 +52,13 @@ class Register extends Component {
               password:
               <Form.Input fluid icon='lock' iconPosition='left' type='password' name='password' onChange={this.handleChange}/>
               <Button fluid size='large' type='sumbit'>Register</Button>
-              <BrowserRouter>
-                        Already a member? <Link to='/auth/login'>Login</Link>
-                     </BrowserRouter>
 
-            <Login path='/auth/login' component={Login}/>
             </Segment>
           </Form>
         </Grid.Column>
 
       </Grid>
-      )
+    )
   }
 }
 

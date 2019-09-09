@@ -6,7 +6,8 @@ import { Router, browserHistory } from 'react-router';
 
 import Register from './Register';
 import Login from './Login' 
-import Upload from './UploadProduct'
+//import Upload from './UploadProduct'
+import MainContainer from './MainContainer'
 
 class App extends Component {
   constructor() {
@@ -14,8 +15,8 @@ class App extends Component {
 
     this.state = {
       username: '',
-      password: '',
-      products: '',
+      products: [],
+      loggedIn: false,
       id: 0
     }
   }
@@ -36,43 +37,47 @@ class App extends Component {
 
       console.log(parsedResponse)
 
-      this.setState(() => {
-        return {
-          ...parsedResponse.data,
-          loading: false
-        }
-      })
-
-      return parsedResponse;
-
     } catch (err) {
       console.log(err)
     }
   }
 
 
-  login = async (loginInfo) => {
+  login = async (login) => {
       try {
          const loginResponse = await fetch('http://localhost:3000/auth/login', {
             method: 'POST',
             credentials: 'include',
-            body: loginInfo,
+            body: JSON.stringify(login),
             headers: {
-               'enctype': 'multipart/form-data'
+               'Content-Type': 'application/json'
             }
          })
 
          const parsedResponse = await loginResponse.json();
 
-         if (parsedResponse.status.code === 200) {
-            this.setState({
-               ...parsedResponse.data,
-               loggedIn: true
-            })
+         // if(this.parsedResponse.code === 200) {
+         //   this.setState({
+         //    //username: 
+         //    loggedIn: true
+         //   })
+         // }
+         this.setState ({
+            ...parsedResponse.data,
+            loggedIn: true
+         })
+         // if (parsedResponse.status.code === 200) {
+         //    this.setState({
+         //       ...parsedResponse.data,
+         //       loggedIn: true
+         //    })
 
-         }
+         // }
 
-         return parsedResponse
+
+  
+         console.log(this.state);
+         console.log(parsedResponse);
 
       } catch (err) {
       console.log(err)
@@ -115,10 +120,13 @@ class App extends Component {
 
     return (
       <div>
-
-      <Register register={this.register}/>
-      <Login path='/auth/login' component={Login}/>
-      <Upload exact path="/products/upload" uploadProducts={this.uploadProducts} props={this.state}/>
+        <div>
+          {this.state.loggedIn ? <MainContainer username={this.state.username}/> : <Login login={this.login}/>}
+          <Register register={this.register}/>
+        </div>
+        
+        {/* main container --- conditional rendering */}
+        
       
       </div>
     )

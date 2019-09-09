@@ -18,24 +18,20 @@ class Login extends Component {
 
    handleSubmit = async (e) => {
       e.preventDefault();
+     
+      //console.log(this.props.login);
+      this.props.login(this.state);
+      //console.log(this.state);
 
-      const data = new FormData();
-      data.append('username', this.state.username);
-      data.append('password', this.state.password);
-
-      const loginResponse = await this.props.login(data);
-
-      //this.props.history.push('/home')
-
-      return loginResponse;
+      
 
    }
 
    render(){
-
+      // return <h1>Login</h1>
       return (
 
-         <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
+         <Grid textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
                <Header as='h2' textAlign='center'>
                   Log in
