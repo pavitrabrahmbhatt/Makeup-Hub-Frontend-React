@@ -13,6 +13,7 @@ class Upload extends Component {
       name: '',
       price: '',
       imageLink: '',
+      category: '',
       description: '',
       productId: '',
       productColors: [],
@@ -47,7 +48,7 @@ class Upload extends Component {
   }
 
   render(){
-    console.log(this.state.user_id, "HERE IS USER ID ON THE UPLOAD PAGE")
+    //console.log(this.state.user_id, "HERE IS USER ID ON THE UPLOAD PAGE")
     return (
       
       <Grid columns={4} padded style={{ height: '100vh'}}>  
@@ -71,7 +72,8 @@ class Upload extends Component {
               <Form.Input  type='text' name='imageLink' onChange={this.handleChange}/>
               Description:
               <Form.Input  type='text' name='description' onChange={this.handleChange}/>
-
+              Category (vegan,luxury,drugstore):
+              <Form.Input  type='text' name='category' onChange={this.handleChange}/>
     
               <Button fluid size='large' type='sumbit'>Submit</Button>
             </Segment>

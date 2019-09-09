@@ -75,8 +75,8 @@ class App extends Component {
 
 
   
-         console.log(this.state);
-         console.log(parsedResponse);
+         //console.log(this.state);
+         //console.log(parsedResponse);
 
       } catch (err) {
       console.log(err)
@@ -93,7 +93,6 @@ class App extends Component {
           
         </div>
         
-        {/* main container --- conditional rendering */}
         
       
       </div>
@@ -101,55 +100,6 @@ class App extends Component {
   }
 }
 
-// class App extends Component {
-//   constructor(){
-//     super();
-//     this.state = {
-//       products: ['a','a','a']
-//     }
-//   }
 
-//   componentDidMount() {
-//     this.getData()
-
-//   }
-
-//   getData = async () => {
-//     try {
-        
-//       const vegan = fetch('http://localhost:3000/products/vegan', {
-//           credentials: 'include',
-//           method: 'GET'
-//         });
-//       alert(vegan, '%c this is vegan', 'color: blue;')
-
-//       //const json = await vegan.json()
-//       this.setState({
-//         products: vegan
-//       })
-//     } catch(err){
-//       return err;
-//     }
-//   }
-
-//   render() {
-//     console.log(this.state);
-//     const listedProducts = this.state.products.map((product, i) => {
-//       return(
-//           <div key={i}>
-//               {product}
-//           </div>
-//       )
-//     })
-    
-//     return (
-//       <div className="App">
-//         <h1>Products</h1>
-//         <ul><li>{listedProducts}</li></ul>
-        
-//       </div>
-//     );
-//   }
-// }
 
 export default App;
