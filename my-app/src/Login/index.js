@@ -23,7 +23,7 @@ class Login extends Component {
       data.append('username', this.state.username);
       data.append('password', this.state.password);
 
-      const loginResponse = await this.props.logIn(data);
+      const loginResponse = await this.props.login(data);
 
       //this.props.history.push('/home')
 
@@ -50,9 +50,6 @@ class Login extends Component {
                  
                      <Button fluid size='large' type='sumbit'>Log in</Button>
 
-                     <Message>
-                        Not a member? <Link to='/Register'>Register</Link>
-                     </Message>
              
                   </Segment>
                </Form>

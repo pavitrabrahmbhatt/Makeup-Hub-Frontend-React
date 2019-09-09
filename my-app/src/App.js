@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 //import logo from './logo.svg';
 import './App.css';
 
+import { Router, browserHistory } from 'react-router';
 
 import Register from './Register';
 import Login from './Login' 
+import Upload from './UploadProduct'
 
 class App extends Component {
   constructor() {
@@ -13,7 +15,8 @@ class App extends Component {
     this.state = {
       username: '',
       password: '',
-      products: ''
+      products: '',
+      id: 0
     }
   }
 
@@ -23,9 +26,9 @@ class App extends Component {
       const registerResponse = await fetch('http://localhost:3000/auth/register', {
         method: 'POST',
         credentials: 'include',// on every request we have to send the cookie
-        body: data,
+        body: JSON.stringify(data),
         headers: {
-          'enctype': 'multipart/form-data'
+          'Content-Type': 'application/json'
         }
       })
 
@@ -33,10 +36,13 @@ class App extends Component {
 
       console.log(parsedResponse)
 
-      this.setState({
-        ...parsedResponse.data,
-        loading: false
+      this.setState(() => {
+        return {
+          ...parsedResponse.data,
+          loading: false
+        }
       })
+
       return parsedResponse;
 
     } catch (err) {
@@ -111,11 +117,9 @@ class App extends Component {
       <div>
 
       <Register register={this.register}/>
-      <Login />
-      <Route exact path="/products/upload" render={(props) => <UploadProducts {...props} 
-                  uploadProducts={this.uploadProducts}/>} 
-               />
-
+      <Login path='/auth/login' component={Login}/>
+      <Upload exact path="/products/upload" uploadProducts={this.uploadProducts} props={this.state}/>
+      
       </div>
     )
   }

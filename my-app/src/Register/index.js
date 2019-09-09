@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react';
-// import { Link } from 'react-router-dom';
+import { Link, BrowserRouter } from 'react-router-dom';
+import Login from '../Login'
 
 class Register extends Component {
   constructor(){
@@ -18,11 +19,11 @@ class Register extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
-    data.append('file', this.state.image);
-    data.append('username', this.state.username);
+    // const data = new FormData();
+    // data.append('file', this.state.image);
+    // data.append('username', this.state.username);
 
-    const registerCall = this.props.register(data);
+    const registerCall = this.props.register(this.state);
 
     // registerCall.then((data) => {
     //   console.log(data)
@@ -47,10 +48,15 @@ class Register extends Component {
               password:
               <Form.Input fluid icon='lock' iconPosition='left' type='password' name='password' onChange={this.handleChange}/>
               <Button fluid size='large' type='sumbit'>Register</Button>
+              <BrowserRouter>
+                        Already a member? <Link to='/auth/login'>Login</Link>
+                     </BrowserRouter>
 
+            <Login path='/auth/login' component={Login}/>
             </Segment>
           </Form>
         </Grid.Column>
+
       </Grid>
       )
   }
