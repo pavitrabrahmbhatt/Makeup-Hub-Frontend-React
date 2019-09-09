@@ -4,8 +4,10 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Label } from 'sema
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-import Upload from '../UploadProduct'
+
 import Home from '../Home'
+import Profile from '../Profile'
+
 
 class MainContainer extends Component {
   constructor(){
@@ -28,35 +30,7 @@ class MainContainer extends Component {
       // chanfe the value in state of what page is show
   }    
 
-  uploadProduct = async (data) => {
-
-      try {
-        
-         const addProductResponse = await fetch('http://localhost:3000/products/upload', {
-            method: 'POST',
-            credentials: 'include',// on every request we have to send the cookie
-            body: JSON.stringify(data),
-            headers: {
-               'Content-Type': 'application/json'
-            }
-         })
-
-         const parsedResponse = await addProductResponse.json();
-
-         const newList = this.state.veganProducts
-
-         const newProduct = parsedResponse.data
-
-         newList.push(newProduct)
-
-         this.setState({
-            veganProducts: newList
-         })
-
-      } catch(err){
-         console.log(err);
-      }
-   }
+  
 
 
   
@@ -68,8 +42,9 @@ class MainContainer extends Component {
     return (
       <div>
       <h1>main container hello {this.props.username}</h1>
-        <Upload uploadProduct={this.uploadProduct} products={this.state.products}/>
-        <Home veganProducts = {this.state.veganProducts}/>
+      <Home veganProducts = {this.state.veganProducts}/>
+      <Profile/>
+
         
       </div>
       )
