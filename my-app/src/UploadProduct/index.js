@@ -14,8 +14,7 @@ class Upload extends Component {
       price: '',
       imageLink: '',
       description: '',
-      productId: 0,
-      createdAt: '',
+      productId: '',
       productColors: [],
       userId: ''
     }
@@ -38,18 +37,13 @@ class Upload extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const upload = this.props.uploadProduct(this.state);
-    
-    upload.then((data) => {
+    //console.log(this.state);
+    // upload.then((data) => {
 
-      if(data.status.message === 'Success'){
-        this.props.history.push('products/:id')
-
-      } else {
-        console.log(data, this.props)
-      }
-    }).catch((err) => {
-      console.log(err)
-    })
+      
+    // }).catch((err) => {
+    //   console.log(err)
+    // })
   }
 
   render(){
@@ -76,7 +70,8 @@ class Upload extends Component {
               Image Link:
               <Form.Input  type='text' name='imageLink' onChange={this.handleChange}/>
               Description:
-              <Form.Input  type='text' name='territory' onChange={this.handleChange}/>
+              <Form.Input  type='text' name='description' onChange={this.handleChange}/>
+
     
               <Button fluid size='large' type='sumbit'>Submit</Button>
             </Segment>

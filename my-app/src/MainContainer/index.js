@@ -12,7 +12,8 @@ class MainContainer extends Component {
 
     this.state = {
       userId: '',
-      username: ''
+      username: '',
+      products: []
     }
     
   }
@@ -20,13 +21,48 @@ class MainContainer extends Component {
     
   }
 
+  uploadProduct = async (data) => {
+
+      try {
+      
+         const addProductResponse = await fetch('http://localhost:3000/products/upload', {
+            method: 'POST',
+            credentials: 'include',// on every request we have to send the cookie
+            body: JSON.stringify(data),
+            headers: {
+               'Content-Type': 'application/json'
+            }
+         })
+
+         const parsedResponse = await addProductResponse.json();
+
+         const newList = this.state.products
+
+         const newProduct = parsedResponse.data
+
+         newList.push(newProduct)
+
+         this.setState({
+            products: newList
+         })
+
+      } catch(err){
+         console.log(err);
+      }
+   }
+
+
   
   render(){
-    console.log('main container')
+    console.log('this.state in main container')
+    console.log(this.state);
+    console.log(this.props);
+
     return (
       <div>
       <h1>main container hello {this.props.username}</h1>
-      <Upload uploadProducts={this.uploadProducts} products={this.state.products}/>
+
+      <Upload uploadProduct={this.uploadProduct} products={this.state.products}/>
       </div>
       )
   }

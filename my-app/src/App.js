@@ -15,7 +15,6 @@ class App extends Component {
 
     this.state = {
       username: '',
-      products: [],
       loggedIn: false,
       id: 0
     }
@@ -84,45 +83,14 @@ class App extends Component {
       }
    }   
 
-   uploadProduct = async (data) => {
-
-      try {
-      
-         const addProductResponse = await fetch('http://localhost:3000/products/upload', {
-            method: 'POST',
-            credentials: 'include',// on every request we have to send the cookie
-            body: data,
-            headers: {
-               'enctype': 'multipart/form-data'
-            }
-         })
-
-         const parsedResponse = await addProductResponse.json();
-
-         const newList = this.state.products.slice()
-
-         const newProduct = parsedResponse.data
-
-         newList.push(newProduct)
-
-         this.setState({
-            products: newList
-         })
-
-         return parsedResponse
-
-      } catch(err){
-         console.log(err);
-      }
-   }
-
+   
   render () {
 
     return (
       <div>
         <div>
           {this.state.loggedIn ? <MainContainer username={this.state.username}/> : <Login login={this.login}/>}
-          <Register register={this.register}/>
+          
         </div>
         
         {/* main container --- conditional rendering */}
