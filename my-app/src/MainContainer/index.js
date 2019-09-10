@@ -74,14 +74,8 @@ class MainContainer extends Component {
       })
   } 
 
-
-  favorite = (product) => {
-      let newFavs = this.state.userFavs
-      newFavs.push(product)
-      this.setState({
-        userFavs: newFavs
-      })
-  }    
+     
+      
   
 
 
@@ -103,7 +97,11 @@ class MainContainer extends Component {
       {this.state.pageShowing === 'luxury' ? <ShowLuxury showProduct={this.showProduct}luxuryProducts={this.state.luxuryProducts}/> : null}
       {this.state.pageShowing === 'product' ? <ShowProduct productBeingShown={this.state.productBeingShown}/> : null}
       {this.state.pageShowing === 'profile' ? <Profile userFavs={this.state.userFavs}/> : null}
-      {this.state.pageShowing === 'home' ? <Home favorite={this.favorite}userFavs={this.state.userFavs} veganProducts={this.state.veganProducts}drugstoreProducts={this.state.drugstoreProducts}luxuryProducts={this.state.luxuryProducts} showVegan={this.showVegan}showDrugstore={this.showDrugstore}showLuxury={this.showLuxury}showProduct={this.showProduct}showHome={this.showHome}/>  : null}
+      {this.state.pageShowing === 'home' ? 
+      <Home 
+      
+      userFavs={this.state.userFavs} veganProducts={this.state.veganProducts} drugstoreProducts={this.state.drugstoreProducts}luxuryProducts={this.state.luxuryProducts} showVegan={this.showVegan}showDrugstore={this.showDrugstore}showLuxury={this.showLuxury}showProduct={this.showProduct}showHome={this.showHome}
+      />  : null}
         
       </div>
       )

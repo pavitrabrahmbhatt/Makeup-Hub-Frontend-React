@@ -166,18 +166,18 @@ class Home extends Component {
       // console.log(product);
       return(
           <div key={i}>
-          <img height='20' width='20' 
-                src={product.imageLink}
-                alt="new"
-              />
-              {product.brand}
-              <button 
-                onClick={
+          <img onClick={
                   () => { 
                     this.props.showProduct(product.productId) 
                   }
                 }
-              >{product.name}</button>
+                height='60' width='60' 
+                src={product.imageLink}
+                alt={product.name}
+              />
+              
+              
+            
           </div>
       )
     })

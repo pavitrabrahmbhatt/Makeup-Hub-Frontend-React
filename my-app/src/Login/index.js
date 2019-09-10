@@ -34,7 +34,7 @@ class Login extends Component {
          <Grid textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
                <Header as='h2' textAlign='center'>
-                  Log in
+                  MAKEUP HUB -- Log in
                </Header>
                <Form onSubmit={this.handleSubmit}>
                   <Segment stacked textAlign='left'>
