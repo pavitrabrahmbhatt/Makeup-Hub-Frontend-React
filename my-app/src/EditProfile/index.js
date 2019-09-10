@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Message, Segment} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-class Profile extends Component {
+class EditProfile extends Component {
     constructor(){
         super();
 
@@ -15,6 +15,10 @@ class Profile extends Component {
 
     }
 
+    handleSubmit() {
+
+    }
+
     render(){
 
     // return <h1>Login</h1>
@@ -24,7 +28,7 @@ class Profile extends Component {
                     <Form onSubmit={this.handleSubmit}>
                         <Segment stacked>
                             Edit Username:
-                            <Form.Input  type='text' name='username' onChange={this.handleChange}/>
+                            <Form.Input type='text' name='username'/>
                         </Segment>
                     </Form>
                 </Grid.Column>
@@ -32,4 +36,4 @@ class Profile extends Component {
         )
     }
 }
-export default Profile;
+export default EditProfile;

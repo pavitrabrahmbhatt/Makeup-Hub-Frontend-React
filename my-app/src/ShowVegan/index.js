@@ -41,6 +41,7 @@ class ShowVegan extends Component {
 
   render() {
     const listedVeganProducts = this.state.veganProducts.map((product, i) => {
+      console.log(product);
       return(
           <div key={i}>
 

@@ -51,12 +51,12 @@ class Upload extends Component {
     //console.log(this.state.user_id, "HERE IS USER ID ON THE UPLOAD PAGE")
     return (
       
-      <Grid columns={4} padded style={{ height: '100vh'}}>  
+      <Grid columns={1} padded style={{ height: '100vh'}}>  
 
         <Grid.Column>
         </Grid.Column>
         
-        <Grid.Column style={{maxWidth: 400}}>
+        <Grid.Column style={{maxWidth: 800}}>
           <Header as='h2' textAlign='center'>
             Upload a Product
           </Header>

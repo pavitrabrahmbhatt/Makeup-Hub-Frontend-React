@@ -11,6 +11,7 @@ import ShowDrugstore from '../ShowDrugstore'
 import ShowLuxury from '../ShowLuxury'
 import ShowProduct from '../ShowProduct'
 import Profile from '../Profile'
+import EditProfile from '../EditProfile'
 
 
 class MainContainer extends Component {
@@ -23,12 +24,35 @@ class MainContainer extends Component {
       veganProducts: [],
       drugstoreProducts: [],
       luxuryProducts: [],
-      pageShowing: 'home', // 'vegan','luxury','drugstore','product', 'profile'
+      pageShowing: 'home', // 'vegan','luxury','drugstore','product', 'profile', 'edit'
       userFavs: [],
       productBeingShown: null
     }
     
   }
+
+  // getUser = async (id) => {
+    
+  //     try {  
+
+  //        const userResponse = await fetch('http://localhost:3000/auth', {
+  //           credentials: 'include',
+  //           method: 'GET'
+  //        });
+  //        const resolvedPromise = await userResponse.json()
+  //        console.log("here is the user");
+  //        console.log(resolvedPromise);
+
+  //        this.setState({
+  //           username: resolvedPromise.data.username,
+  //           userFavs: resolvedPromise.data.favorites
+  //     })
+         
+  //   } catch(err){
+  //     console.error(err) ;
+  //     }
+  //   }
+
   componentDidMount() {
       this.setState({
         username: this.props.username
@@ -60,6 +84,12 @@ class MainContainer extends Component {
       })
   }   
 
+  editProfile = () => {
+      this.setState({
+        pageShowing: 'edit'
+      })
+  }    
+
 
   showHome = (pg) => {
       // change the value in state of what page is show
@@ -78,27 +108,26 @@ class MainContainer extends Component {
 
      
       
-  
-
-
-  
   render(){
     console.log('this.state.productBeingShown in main container')
     console.log(this.state.productBeingShown);
     //console.log(this.props);
 
     return (
-      <div>
-      <h1>main container hello {this.props.username}</h1>
-      <button onClick={this.showHome}>home</button>
-      <button onClick={this.showProfile}>profile</button>
+     
+      <div style={{backgroundColor: '#b47978' }}>
+      <h1 style={{display: 'flex', justifyContent: 'center'}}>Make/Up/Hub Hello, {this.state.username}</h1>
+      <Button onClick={this.showHome}>home</Button>
+      <Button onClick={this.showProfile}>profile</Button>
+      <Button onClick={this.editProfile}>edit profile</Button>
 
       
       {this.state.pageShowing === 'vegan' ? <ShowVegan showProduct={this.showProduct}veganProducts={this.state.veganProducts}/> : null}
       {this.state.pageShowing === 'drugstore' ? <ShowDrugstore showProduct={this.showProduct}drugstoreProducts={this.state.drugstoreProducts}/> : null}
       {this.state.pageShowing === 'luxury' ? <ShowLuxury showProduct={this.showProduct}luxuryProducts={this.state.luxuryProducts}/> : null}
       {this.state.pageShowing === 'product' ? <ShowProduct productBeingShown={this.state.productBeingShown}/> : null}
-      {this.state.pageShowing === 'profile' ? <Profile username={this.state.username} userFavs={this.state.userFavs}/> : null}
+      {this.state.pageShowing === 'profile' ? <Profile showProduct={this.showProduct}username={this.state.username} userFavs={this.state.userFavs}/> : null}
+      {this.state.pageShowing === 'edit' ? <EditProfile editProfile={this.editProfile} username={this.state.username} /> : null}
       {this.state.pageShowing === 'home' ? 
       <Home 
       
@@ -106,6 +135,7 @@ class MainContainer extends Component {
       />  : null}
         
       </div>
+      
       )
   }
 }

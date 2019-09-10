@@ -8,7 +8,8 @@ class Profile extends Component {
 
       this.state = {
          username: '',
-         userFavs: []
+         userFavs: [],
+         pageShowing: 'profile' // 'edit'
       }
    }
 
@@ -48,6 +49,11 @@ class Profile extends Component {
             return(
                 <div key={i}>
                 <img
+                  onClick={
+                    () => { 
+                      this.props.showProduct(product.productId) 
+                    }
+                  }
                     height='80' width='80' 
                     src={this.state.userFavs[i].imageLink}
                     alt='img'
@@ -66,13 +72,18 @@ class Profile extends Component {
                   Your Profile Page
                </Header>
                   <h3>{this.state.username}</h3>
-                  <button >edit profile</button>
+                  <Button onClick={this.props.editProfile}>edit profile</Button>
                <h3>{this.state.username}'s Favorites</h3>
                <p>{listedProducts}</p>
 
             </Grid.Column>
          </Grid>
+
+
+
+
       )
+
    }
 
 }

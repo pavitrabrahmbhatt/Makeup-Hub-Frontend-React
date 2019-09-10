@@ -137,7 +137,7 @@ class Home extends Component {
 
     render() {
       const listedVeganProducts = this.state.veganProducts.map((product, i) => {
-        // console.log(product);
+        console.log(product);
         return(
             <div key={i}>
             <img onClick={
@@ -191,20 +191,24 @@ class Home extends Component {
         })
       
         return (
+          <div>
             <div className="App">
                 <h1>Vegan Products</h1>
                 <ul>{listedVeganProducts}</ul>
-                <button onClick={this.props.showVegan}>See all</button>
+                <Button onClick={this.props.showVegan}>See all</Button>
 
                 <h1>Drugstore Products</h1>
                 <ul>{listedDrugstoreProducts}</ul>
-                <button onClick={this.props.showDrugstore}>See all</button>
+                <Button onClick={this.props.showDrugstore}>See all</Button>
 
                 <h1>Luxury Products</h1>
                 <ul>{listedLuxuryProducts}</ul>
-                <button onClick={this.props.showLuxury}>See all</button>
+                <Button onClick={this.props.showLuxury}>See all</Button>
 
-                <Upload uploadProduct={this.uploadProduct} products={this.state.products}/>
+                
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center'}}><Upload uploadProduct={this.uploadProduct} products={this.state.products}/></div>
+
             </div>
         );
     }
