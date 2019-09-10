@@ -5,6 +5,12 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Label } from 'sema
 import Upload from '../UploadProduct'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import ShowVegan from '../ShowVegan'
+import ShowDrugstore from '../ShowDrugstore'
+import ShowLuxury from '../ShowLuxury'
+import ShowProduct from '../ShowProduct'
+
+
 class Home extends Component {
   constructor(){
     super();
@@ -19,9 +25,9 @@ class Home extends Component {
     this.getData() // vegan
     this.getData2() // drugstore
     this.getData3() // luxury
-    this.setState({
-    	veganProducts: this.props.veganProducts
-    })
+    // this.setState({
+    // 	veganProducts: this.props.veganProducts
+    // })
 
   }
 
@@ -47,14 +53,17 @@ class Home extends Component {
          newList.push(newProduct)
 
 
-         const only10 = []
+         let only10 = []
 
-         // while only10 < 10 elements
+         while (only10.length < 10) {
+         	only10.push(newList[0])
+         }
+         console.log(only10);
          // get rand el from newList
          // push into only 10
 
          this.setState({
-            veganProducts: newList
+            veganProducts: only10
          })
 
       } catch(err){
@@ -69,9 +78,22 @@ class Home extends Component {
 	      method: 'GET'
 	  });
       const resolvedPromise = await veganResponse.json()
-      this.setState({
-  		veganProducts: resolvedPromise
-	  })      
+
+      let only10 = []
+
+         while (only10.length < 10) {
+         	only10.push(resolvedPromise[only10.length])
+         }
+         console.log(only10);
+         // get rand el from newList
+         // push into only 10
+
+         this.setState({
+            veganProducts: only10
+         })
+   //    this.setState({
+  	// 	veganProducts: resolvedPromise
+	  // })      
     } catch(err){
       console.error(err) ;
     }
@@ -86,17 +108,28 @@ class Home extends Component {
 	  });
       const resolvedPromise = await drugstoreResponse.json()
       console.log(resolvedPromise); // data
-      this.setState({
-  		drugstoreProducts: resolvedPromise
-	  })      
+
+      let only10 = []
+
+         while (only10.length < 10) {
+         	only10.push(resolvedPromise[only10.length])
+         }
+         console.log(only10);
+         // get rand el from newList
+         // push into only 10
+
+         this.setState({
+            drugstoreProducts: only10
+         })
+   //    this.setState({
+  	// 	drugstoreProducts: resolvedPromise
+	  // })      
     } catch(err){
       console.error(err) ;
     }
   }
 
-  showProduct = () => {
-  		
-  }		
+  
 
   getData3 = async (data) => {
     try {     
@@ -107,9 +140,22 @@ class Home extends Component {
       const resolvedPromise = await luxuryResponse.json()
 
       console.log(resolvedPromise); // data
-      this.setState({
-  		luxuryProducts: resolvedPromise
-	  })      
+
+      let only10 = []
+
+         while (only10.length < 10) {
+         	only10.push(resolvedPromise[only10.length])
+         }
+         console.log(only10);
+         // get rand el from newList
+         // push into only 10
+
+         this.setState({
+            luxuryProducts: only10
+         })
+   //    this.setState({
+  	// 	luxuryProducts: resolvedPromise
+	  // })      
     } catch(err){
       console.error(err) ;
     }
@@ -129,7 +175,7 @@ class Home extends Component {
       return(
           <div key={i}>
               {product.imageLink}
-              <button>{product.name}</button>
+              <button onClick={this.showProduct}>{product.name}</button>
           </div>
       )
     })
@@ -138,7 +184,7 @@ class Home extends Component {
       return(
           <div key={i}>
               {product.brand}
-              {product.name}
+              <button onClick={this.showProduct}>{product.name}</button>
           </div>
       )
     })
@@ -147,15 +193,22 @@ class Home extends Component {
       <div className="App">
         <h1>Vegan Products</h1>
         <ul>{listedVeganProducts}</ul>
+        <button onClick={this.props.showVegan}>See all</button>
 
         <h1>Drugstore Products</h1>
         <ul>{listedDrugstoreProducts}</ul>
+        <button onClick={this.props.showDrugstore}>See all</button>
 
         <h1>Luxury Products</h1>
         <ul>{listedLuxuryProducts}</ul>
+        <button onClick={this.props.showLuxury}>See all</button>
 
         <Upload uploadProduct={this.uploadProduct} products={this.state.products}/>
-        
+
+
+
+
+        <ShowProduct favorite={this.props.favorite} />
       </div>
     );
   }

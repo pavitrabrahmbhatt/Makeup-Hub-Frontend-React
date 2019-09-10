@@ -7,30 +7,27 @@ class Profile extends Component {
       super();
 
       this.state = {
-         username: '',
-         userFavs: []
+         username: ''
       }
    }
 
    componentDidMount() {
-      this.setState({
-         userFavs: this.props.userFavs
-      }) 
+       
    }
 
    render(){
-      console.log(this.props.userFavs);
+      
       // return <h1>Login</h1>
       return (
 
          <Grid textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
-               <Header as='h2' textAlign='center'>
-                  Profile Page
-               </Header>
-                  <p>Username</p>
-                  <button >edit profile</button>
-               <h3>Favorites</h3>
+               <Form onSubmit={this.handleSubmit}>
+               <Segment stacked>
+              Edit Username:
+              <Form.Input  type='text' name='username' onChange={this.handleChange}/>
+              </Segment>
+          </Form>
             </Grid.Column>
          </Grid>
       )
@@ -38,7 +35,3 @@ class Profile extends Component {
 
 }
 export default Profile;
-
-
-
-
