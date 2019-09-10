@@ -163,10 +163,21 @@ class Home extends Component {
 
   render() {
     const listedVeganProducts = this.state.veganProducts.map((product, i) => {
+      // console.log(product);
       return(
           <div key={i}>
+          <img height='20' width='20' 
+                src={product.imageLink}
+                alt="new"
+              />
               {product.brand}
-              <button onClick={this.showProduct}>{product.name}</button>
+              <button 
+                onClick={
+                  () => { 
+                    this.props.showProduct(product.productId) 
+                  }
+                }
+              >{product.name}</button>
           </div>
       )
     })
@@ -174,8 +185,18 @@ class Home extends Component {
     const listedDrugstoreProducts = this.state.drugstoreProducts.map((product, i) => {
       return(
           <div key={i}>
-              {product.imageLink}
-              <button onClick={this.showProduct}>{product.name}</button>
+              <img height='20' width='20' 
+                src={product.imageLink}
+                alt="new"
+              />
+              
+              <button 
+                onClick={
+                  () => { 
+                    this.props.showProduct(product.productId) 
+                  }
+                }
+              >{product.name}</button>
           </div>
       )
     })
@@ -183,8 +204,18 @@ class Home extends Component {
     const listedLuxuryProducts = this.state.luxuryProducts.map((product, i) => {
       return(
           <div key={i}>
+          <img height='20' width='20' 
+                src={product.imageLink}
+                alt="new"
+              />
               {product.brand}
-              <button onClick={this.showProduct}>{product.name}</button>
+              <button 
+                onClick={
+                  () => { 
+                    this.props.showProduct(product.productId) 
+                  }
+                }
+              >{product.name}</button>
           </div>
       )
     })
@@ -204,11 +235,6 @@ class Home extends Component {
         <button onClick={this.props.showLuxury}>See all</button>
 
         <Upload uploadProduct={this.uploadProduct} products={this.state.products}/>
-
-
-
-
-        <ShowProduct favorite={this.props.favorite} />
       </div>
     );
   }

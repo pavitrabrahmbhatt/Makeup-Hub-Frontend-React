@@ -41,21 +41,10 @@ class ShowDrugstore extends Component {
       const resolvedPromise = await drugstoreResponse.json()
       console.log(resolvedPromise); // data
 
-      let only10 = []
-
-         while (only10.length < 10) {
-         	only10.push(resolvedPromise[only10.length])
-         }
-         console.log(only10);
-         // get rand el from newList
-         // push into only 10
-
-         this.setState({
-            drugstoreProducts: only10
-         })
-   //    this.setState({
-  	// 	drugstoreProducts: resolvedPromise
-	  // })      
+      
+      this.setState({
+  		drugstoreProducts: resolvedPromise
+	  })      
     } catch(err){
       console.error(err) ;
     }
@@ -71,7 +60,7 @@ class ShowDrugstore extends Component {
       return(
           <div key={i}>
               {product.imageLink}
-              <button>{product.name}</button>
+              <button onClick={this.props.showProduct}>{product.name}</button>
           </div>
       )
     })

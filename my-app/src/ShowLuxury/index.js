@@ -38,21 +38,10 @@ class ShowLuxury extends Component {
 
       console.log(resolvedPromise); // data
 
-      let only10 = []
-
-         while (only10.length < 10) {
-         	only10.push(resolvedPromise[only10.length])
-         }
-         console.log(only10);
-         // get rand el from newList
-         // push into only 10
-
-         this.setState({
-            luxuryProducts: only10
-         })
-   //    this.setState({
-  	// 	luxuryProducts: resolvedPromise
-	  // })      
+     
+      this.setState({
+  		luxuryProducts: resolvedPromise
+	  })      
     } catch(err){
       console.error(err) ;
     }
@@ -65,7 +54,7 @@ class ShowLuxury extends Component {
       return(
           <div key={i}>
               {product.brand}
-              {product.name}
+              <button onClick={this.props.showProduct}>{product.name}</button>
           </div>
       )
     })

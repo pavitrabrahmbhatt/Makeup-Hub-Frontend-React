@@ -44,7 +44,7 @@ class ShowVegan extends Component {
       return(
           <div key={i}>
               {product.brand}
-              <button onClick={this.showProduct}>{product.name}</button>
+              <button onClick={this.props.showProduct}>{product.name}</button>
           </div>
       )
     })
@@ -55,7 +55,7 @@ class ShowVegan extends Component {
       <div className="App">
         <h1>Vegan Products</h1>
         <ul>{listedVeganProducts}</ul>
-        <button onClick={this.showVegan}>See all</button>
+        
 
       </div>
     );
