@@ -43,8 +43,17 @@ class ShowVegan extends Component {
     const listedVeganProducts = this.state.veganProducts.map((product, i) => {
       return(
           <div key={i}>
-              {product.brand}
-              <button onClick={this.props.showProduct}>{product.name}</button>
+
+          <img onClick={
+                  () => { 
+                    this.props.showProduct(product.productId) 
+                  }
+                }
+                height='80' width='80' 
+                src={product.imageLink}
+                alt={product.name}
+              />
+
           </div>
       )
     })

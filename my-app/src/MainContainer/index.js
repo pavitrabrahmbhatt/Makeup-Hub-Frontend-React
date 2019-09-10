@@ -30,7 +30,9 @@ class MainContainer extends Component {
     
   }
   componentDidMount() {
-    
+      this.setState({
+        username: this.props.username
+      })
   }
 
   showVegan = () => {
@@ -96,7 +98,7 @@ class MainContainer extends Component {
       {this.state.pageShowing === 'drugstore' ? <ShowDrugstore showProduct={this.showProduct}drugstoreProducts={this.state.drugstoreProducts}/> : null}
       {this.state.pageShowing === 'luxury' ? <ShowLuxury showProduct={this.showProduct}luxuryProducts={this.state.luxuryProducts}/> : null}
       {this.state.pageShowing === 'product' ? <ShowProduct productBeingShown={this.state.productBeingShown}/> : null}
-      {this.state.pageShowing === 'profile' ? <Profile userFavs={this.state.userFavs}/> : null}
+      {this.state.pageShowing === 'profile' ? <Profile username={this.state.username} userFavs={this.state.userFavs}/> : null}
       {this.state.pageShowing === 'home' ? 
       <Home 
       

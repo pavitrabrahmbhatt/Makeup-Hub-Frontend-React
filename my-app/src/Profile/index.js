@@ -13,10 +13,33 @@ class Profile extends Component {
    }
 
    componentDidMount() {
+      this.getUser()
       this.setState({
          userFavs: this.props.userFavs
       }) 
    }
+
+   getUser = async (id) => {
+    
+      try {  
+
+         const userResponse = await fetch('http://localhost:3000/auth', {
+            credentials: 'include',
+            method: 'GET'
+         });
+         const resolvedPromise = await userResponse.json()
+         console.log("here is the user");
+         console.log(resolvedPromise);
+
+         this.setState({
+            username: resolvedPromise.data.username
+            //fav
+      })
+         
+    } catch(err){
+      console.error(err) ;
+      }
+    }
 
    render(){
       console.log(this.props.userFavs);
@@ -26,11 +49,11 @@ class Profile extends Component {
          <Grid textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
                <Header as='h2' textAlign='center'>
-                  Profile Page
+                  Your Profile Page
                </Header>
-                  <p>Username</p>
+                  <h3>{this.state.username}</h3>
                   <button >edit profile</button>
-               <h3>Favorites</h3>
+               <h3>{this.state.username}'s Favorites</h3>
             </Grid.Column>
          </Grid>
       )

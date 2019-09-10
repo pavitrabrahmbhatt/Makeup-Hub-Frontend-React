@@ -17,8 +17,8 @@ class ShowProduct extends Component {
             productId: '',
             productColors: [],
             userId: '',
-            favorites: [],
-            userFavs: []
+            favorites: []//,
+            // userFavs: []
         }
     }
 
@@ -34,20 +34,20 @@ class ShowProduct extends Component {
       console.log('get product called');
       try {  
 
-        const productResponse = await fetch('http://localhost:3000/products/fav' + id + '/0', {
+        const productResponse = await fetch('http://localhost:3000/products/fav/' + id + '/0', {
           credentials: 'include',
           method: 'GET'
-      });
-      const resolvedPromise = await productResponse.json()
-      
-      let newFavs = this.state.userFavs
-      newFavs.push(resolvedPromise)
-      console.log(newFavs);
+        });
+        const resolvedPromise = await productResponse.json()
+        
+        // let newFavs = this.state.userFavs
+        // newFavs.push(resolvedPromise)
+        // console.log(newFavs);
 
 
        this.setState({
-          userFavs: newFavs,
-          favorites: newFavs
+          // userFavs: newFavs,
+          favorites: resolvedPromise.product.favorites
           // brand:resolvedPromise.brand,
           // name:resolvedPromise.name,
           // price: resolvedPromise.price,
@@ -57,46 +57,44 @@ class ShowProduct extends Component {
           //fav
       })
 
-       console.log(this.state);
-  } catch(err){
-      console.error(err) ;
-  }
-}
+        
+      } catch(err){
+          console.error(err) ;
+      }
+    }
 
 
-  favorite = (productId) => {
-    console.log('hitting fav route');
-    this.getfavProduct()
-  }
+
 
     getProduct = async (id) => {
     
-        try {  
+      try {  
 
-          const productResponse = await fetch('http://localhost:3000/products/' + id + '/0', {
-              credentials: 'include',
+        const productResponse = await fetch('http://localhost:3000/products/' + id + '/0', {
+            credentials: 'include',
               method: 'GET'
         });
         const resolvedPromise = await productResponse.json()
-
-       
-
+        console.log("here's product info");
+        console.log(resolvedPromise);
         this.setState({
-            brand:resolvedPromise.brand,
-            name:resolvedPromise.name,
-            price: resolvedPromise.price,
-            imageLink: resolvedPromise.imageLink,
-            description: resolvedPromise.description,
-            productColors:resolvedPromise.productColors
-            //fav
+          brand:resolvedPromise.brand,
+          name:resolvedPromise.name,
+          price: resolvedPromise.price,
+          imageLink: resolvedPromise.imageLink,
+          description: resolvedPromise.description,
+          productColors:resolvedPromise.productColors,
+          favorites: resolvedPromise.favorites
         })
          
-    } catch(err){
-      console.error(err) ;
+      } catch(err){
+        console.error(err) ;
       }
     }
 
     render(){
+        console.log("this.state in ShowProduct")
+        console.log(this.state);
         //console.log(this.state.user_id, "HERE IS USER ID ON THE UPLOAD PAGE")
         return (
             <Grid columns={4} padded style={{ height: '100vh'}}>  
@@ -117,7 +115,7 @@ class ShowProduct extends Component {
 
                     <button onClick={
                         () => { 
-                          this.favorite(this.state.productId) 
+                          this.getfavProduct(this.state.productId) 
                         }
                       }
                      className="ui toggle button">Favorite</button>
