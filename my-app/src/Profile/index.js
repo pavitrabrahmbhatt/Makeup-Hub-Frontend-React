@@ -32,8 +32,8 @@ class Profile extends Component {
          console.log(resolvedPromise);
 
          this.setState({
-            username: resolvedPromise.data.username
-            //fav
+            username: resolvedPromise.data.username,
+            userFavs: resolvedPromise.data.favorites
       })
          
     } catch(err){
@@ -41,8 +41,22 @@ class Profile extends Component {
       }
     }
 
+     
+
    render(){
-      console.log(this.props.userFavs);
+      const listedProducts = this.state.userFavs.map((product, i) => {
+            return(
+                <div key={i}>
+                <img
+                    height='80' width='80' 
+                    src={this.state.userFavs[i].imageLink}
+                    alt='img'
+                />
+                    
+                </div>
+            )
+        })
+      console.log(this.state.userFavs);
       // return <h1>Login</h1>
       return (
 
@@ -54,6 +68,8 @@ class Profile extends Component {
                   <h3>{this.state.username}</h3>
                   <button >edit profile</button>
                <h3>{this.state.username}'s Favorites</h3>
+               <p>{listedProducts}</p>
+
             </Grid.Column>
          </Grid>
       )
