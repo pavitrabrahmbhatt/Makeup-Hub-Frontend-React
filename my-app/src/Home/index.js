@@ -113,8 +113,8 @@ class Home extends Component {
     getData3 = async (data) => {
       try {     
           const luxuryResponse = await fetch('http://localhost:3000/products/luxury', {
-    	      credentials: 'include',
-    	      method: 'GET',
+      	      credentials: 'include',
+      	      method: 'GET',
   	  });
           const resolvedPromise = await luxuryResponse.json()
 
@@ -122,7 +122,7 @@ class Home extends Component {
 
           let only10 = []
 
-          while (only10.length < 10) {
+          while (only10.length < 9) {
           	  only10.push(resolvedPromise[only10.length])
           }
 
@@ -136,41 +136,37 @@ class Home extends Component {
     }
 
     render() {
-      const listedVeganProducts = this.state.veganProducts.map((product, i) => {
-        console.log(product);
-        return(
-            <div key={i}>
-            <img onClick={
-                    () => { 
-                      this.props.showProduct(product.productId) 
-                    }
-                  }
-                  height='80' width='80' 
-                  src={product.imageLink}
-                  alt={product.name}
-                />
-                
-                
-              
-            </div>
-        )
-      })
-
-      const listedDrugstoreProducts = this.state.drugstoreProducts.map((product, i) => {
-        return(
-            <div key={i}>
+        const listedVeganProducts = this.state.veganProducts.map((product, i) => {
+            console.log(product);
+            return(
+                <div key={i}>
                 <img onClick={
                     () => { 
                       this.props.showProduct(product.productId) 
                     }
                   }
-                  height='80' width='80' 
-                  src={product.imageLink}
-                  alt={product.name}
-                />
-                
-            </div>
-        )
+                    height='220' width='220' 
+                    src={product.imageLink}
+                    alt={product.name}
+                />                                    
+                </div>
+            )
+        })
+
+      const listedDrugstoreProducts = this.state.drugstoreProducts.map((product, i) => {
+          return(
+              <div key={i}>
+                  <img onClick={
+                      () => { 
+                        this.props.showProduct(product.productId) 
+                      }
+                    }
+                      height='220' width='220' 
+                      src={product.imageLink}
+                      alt={product.name}
+                  />                
+              </div>
+          )
       })
 
         const listedLuxuryProducts = this.state.luxuryProducts.map((product, i) => {
@@ -181,35 +177,39 @@ class Home extends Component {
                       this.props.showProduct(product.productId) 
                     }
                   }
-                    height='80' width='80' 
+                    height='220' width='220' 
                     src={product.imageLink}
                     alt={product.name}
-                />
-                    
+                />                    
                 </div>
             )
         })
       
-        return (
-          <div>
-            <div className="App">
-                <h1>Vegan Products</h1>
-                <ul>{listedVeganProducts}</ul>
-                <Button onClick={this.props.showVegan}>See all</Button>
-
-                <h1>Drugstore Products</h1>
-                <ul>{listedDrugstoreProducts}</ul>
-                <Button onClick={this.props.showDrugstore}>See all</Button>
-
-                <h1>Luxury Products</h1>
-                <ul>{listedLuxuryProducts}</ul>
-                <Button onClick={this.props.showLuxury}>See all</Button>
-
+        return (    
+                        
+            <Grid columns={3}>
+                <Grid.Row>
+                    <Grid.Column>
+                        <h2 onClick={this.props.showVegan}>Vegan Products</h2>
+                        <ul>{listedVeganProducts}</ul>
+                        <Button onClick={this.props.showVegan}>See all></Button>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <h2 onClick={this.props.showDrugstore}>DrugStore Products</h2>
+                        <ul>{listedDrugstoreProducts}</ul>
+                        <Button onClick={this.props.showDrugstore}>See all></Button>
+                        <Upload uploadProduct={this.uploadProduct} products={this.state.products}/>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <h2 onClick={this.props.showLuxury}>Luxury Products</h2>
+                        <ul>{listedLuxuryProducts}</ul>
+                        <Button onClick={this.props.showLuxury}>See all></Button>
+                    </Grid.Column>
+                </Grid.Row>   
+</Grid> 
                 
-            </div>
-            <div style={{display: 'flex', justifyContent: 'center'}}><Upload uploadProduct={this.uploadProduct} products={this.state.products}/></div>
-
-            </div>
+            
+            
         );
     }
 }

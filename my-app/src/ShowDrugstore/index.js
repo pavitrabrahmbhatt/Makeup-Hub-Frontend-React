@@ -18,19 +18,8 @@ class ShowDrugstore extends Component {
   }
 
   componentDidMount() {
-    //this.getData() // vegan
     this.getData2() // drugstore
-    //this.getData3() // luxury
-    // this.setState({
-    // 	veganProducts: this.props.veganProducts
-    // })
-
   }
-
-  
-
-
-
 
   getData2 = async (data) => {
     try {     
@@ -39,9 +28,6 @@ class ShowDrugstore extends Component {
 	      method: 'GET'
 	  });
       const resolvedPromise = await drugstoreResponse.json()
-      console.log(resolvedPromise); // data
-
-      
       this.setState({
   		drugstoreProducts: resolvedPromise
 	  })      
@@ -50,31 +36,27 @@ class ShowDrugstore extends Component {
     }
   }
 
+    render() {
+      const listedDrugstoreProducts = this.state.drugstoreProducts.map((product, i) => {
+        return(
+            <div key={i}>
+            <img onClick={
+                    () => { 
+                      this.props.showProduct(product.productId) 
+                    }
+                  }
+                  height='220' width='220' 
+                  src={product.imageLink}
+                  alt={product.name}
+                />
+            </div>
+        )
+      })
 
- 
-
-  render() {
-   
-
-    const listedDrugstoreProducts = this.state.drugstoreProducts.map((product, i) => {
-      return(
-          <div key={i}>
-              {product.imageLink}
-              <button onClick={this.props.showProduct}>{product.name}</button>
-          </div>
-      )
-    })
-
-  
-    
     return (
       <div className="App">
-        
-
         <h1>Drugstore Products</h1>
         <ul>{listedDrugstoreProducts}</ul>
-        
-
       </div>
     );
   }

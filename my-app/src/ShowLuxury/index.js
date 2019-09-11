@@ -11,22 +11,14 @@ import { Link } from 'react-router-dom';
 class ShowLuxury extends Component {
   constructor(){
     super();
-    this.state = {
-      
+    this.state = {  
       luxuryProducts:[]
     }
   }
 
-  componentDidMount() {
-   
+  componentDidMount() { 
     this.getData3() // luxury
-    
-
   }
-
-  
-
-  
 
   getData3 = async (data) => {
     try {     
@@ -35,10 +27,6 @@ class ShowLuxury extends Component {
 	      method: 'GET',
 	  });
       const resolvedPromise = await luxuryResponse.json()
-
-      console.log(resolvedPromise); // data
-
-     
       this.setState({
   		luxuryProducts: resolvedPromise
 	  })      
@@ -48,26 +36,28 @@ class ShowLuxury extends Component {
   }
 
   render() {
-    
-
     const listedLuxuryProducts = this.state.luxuryProducts.map((product, i) => {
       return(
           <div key={i}>
-              {product.brand}
-              <button onClick={this.props.showProduct}>{product.name}</button>
+
+          <img onClick={
+                  () => { 
+                    this.props.showProduct(product.productId) 
+                  }
+                }
+                height='220' width='220' 
+                src={product.imageLink}
+                alt={product.name}
+              />
+
           </div>
       )
     })
     
     return (
       <div className="App">
-
-
         <h1>Luxury Products</h1>
-        <ul>{listedLuxuryProducts}</ul>
-        
-
-       
+        <ul>{listedLuxuryProducts}</ul>     
       </div>
     );
   }

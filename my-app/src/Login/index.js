@@ -18,35 +18,24 @@ class Login extends Component {
 
    handleSubmit = async (e) => {
       e.preventDefault();
-     
-      //console.log(this.props.login);
       this.props.login(this.state);
-      //console.log(this.state);
-
-      
-
    }
 
    render(){
-      // return <h1>Login</h1>
       return (
 
-         <Grid textAlign='center'>
+         <Grid verticalAlign='middle' style={{backgroundImage: "url('https://media.giphy.com/media/2YxjQ30CeqDzq/giphy.gif')", height: '100vh'}}textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
                <Header as='h2' textAlign='center'>
-                  MAKEUP HUB -- Log in
+                  MAKEUP HUB 
                </Header>
                <Form onSubmit={this.handleSubmit}>
                   <Segment stacked textAlign='left'>
                      Username:
-                     <Form.Input fluid icon='user' iconPosition='left' placeholder='username' type='text' name='username' onChange={this.handleChange}/>
-           
+                     <Form.Input fluid icon='user' iconPosition='left' placeholder='username' type='text' name='username' onChange={this.handleChange}/>          
                      Password:
                      <Form.Input fluid icon='lock' iconPosition='left' type='password' name='password' onChange={this.handleChange}/>
-                 
                      <Button fluid size='large' type='sumbit'>Log in</Button>
-
-             
                   </Segment>
                </Form>
             </Grid.Column>

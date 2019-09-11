@@ -50,7 +50,7 @@ class ShowVegan extends Component {
                     this.props.showProduct(product.productId) 
                   }
                 }
-                height='80' width='80' 
+                height='220' width='220' 
                 src={product.imageLink}
                 alt={product.name}
               />

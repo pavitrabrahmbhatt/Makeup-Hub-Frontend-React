@@ -54,7 +54,7 @@ class Profile extends Component {
                       this.props.showProduct(product.productId) 
                     }
                   }
-                    height='80' width='80' 
+                    height='200' width='200' 
                     src={this.state.userFavs[i].imageLink}
                     alt='img'
                 />
@@ -69,7 +69,7 @@ class Profile extends Component {
          <Grid textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
                <Header as='h2' textAlign='center'>
-                  Your Profile Page
+                  Profile Page
                </Header>
                   <h3>{this.state.username}</h3>
                   <Button onClick={this.props.editProfile}>edit profile</Button>

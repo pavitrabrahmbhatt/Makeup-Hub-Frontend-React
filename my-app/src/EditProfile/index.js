@@ -5,23 +5,12 @@ import { Link } from 'react-router-dom';
 class EditProfile extends Component {
     constructor(){
         super();
-
         this.state = {
             username: ''
         }
     }
 
-    componentDidMount() {
-
-    }
-
-    handleSubmit() {
-
-    }
-
     render(){
-
-    // return <h1>Login</h1>
         return (
             <Grid textAlign='center'>
                 <Grid.Column style={{maxWidth: 450}}>
