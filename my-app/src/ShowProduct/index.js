@@ -17,7 +17,8 @@ class ShowProduct extends Component {
             productId: '',
             productColors: [],
             userId: '',
-            favorites: []//,
+            favorites: [],
+            pageBeingShown: 'product' // 'edit', 'delete'
             // userFavs: []
         }
     }
