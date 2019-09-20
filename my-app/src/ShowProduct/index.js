@@ -107,7 +107,7 @@ class ShowProduct extends Component {
                         alt="new"
                     />
                     </div>
-                    <h2 style={{display: 'flex', justifyContent: 'center'}}>{this.state.price}</h2>
+                    <h2 style={{display: 'flex', justifyContent: 'center'}}>${this.state.price}</h2>
                     <h2 style={{display: 'flex', justifyContent: 'center'}}>{this.state.description}</h2>
                     <h2 style={{backgroundColor: '#ce8ab6',display: 'flex', justifyContent: 'center'}}>People favorited: {this.state.favorites.length}</h2>
 

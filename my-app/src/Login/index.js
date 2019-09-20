@@ -36,6 +36,7 @@ class Login extends Component {
                      Password:
                      <Form.Input fluid icon='lock' iconPosition='left' type='password' name='password' onChange={this.handleChange}/>
                      <Button fluid size='large' type='sumbit'>Log in</Button>
+                     
                   </Segment>
                </Form>
             </Grid.Column>
