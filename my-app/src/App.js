@@ -4,6 +4,7 @@ import { Router, browserHistory } from 'react-router';
 import Register from './Register';
 import Login from './Login'
 import MainContainer from './MainContainer'
+import './index.css';
 
 class App extends Component {
     constructor() {

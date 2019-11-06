@@ -66,19 +66,36 @@ class Profile extends Component {
       // return <h1>Login</h1>
       return (
 
-         <Grid textAlign='center'>
-            <Grid.Column style={{maxWidth: 450}}>
-               <Header as='h2' textAlign='center'>
-                  Profile Page
-               </Header>
-                  <h3>{this.state.username}</h3>
-                  <Button onClick={this.props.editProfile}>edit profile</Button>
-               <h3>{this.state.username}'s Favorites</h3>
-               <p>{listedProducts}</p>
+        <div>
 
+
+
+
+
+
+    <Header as='h2' textAlign='center' style={{'margin-top':'75px',fontFamily: "Nunito",'font-size':'30px'}}>
+                      {this.state.username.toUpperCase()}'s Favorites
+                   </Header>
+         <Grid columns={5} padded='vertically'textAlign='center' style={{'margin': '75px'}}>
+         
+            <Grid.Column >   
+              <p>{listedProducts}</p>
             </Grid.Column>
+            <Grid.Column >   
+              <p>{listedProducts}</p>
+            </Grid.Column>
+            <Grid.Column >   
+              <p>{listedProducts}</p>
+            </Grid.Column>
+            <Grid.Column >   
+              <p>{listedProducts}</p>
+            </Grid.Column>
+            <Grid.Column >   
+              <p>{listedProducts}</p>
+            </Grid.Column>
+            
          </Grid>
-
+</div>
 
 
 

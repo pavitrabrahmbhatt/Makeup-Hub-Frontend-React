@@ -98,29 +98,39 @@ class ShowProduct extends Component {
         return (
             <Grid textAlign='center' columns={1} style={{display: 'flex', justifyContent: 'center'}} padded style={{ height: '100vh'}}>  
                 <Grid.Column style={{maxWidth: 1500}}>
-                    <Header as='h2' textAlign='center'>
-                        {this.state.name}
+                    <Header style={{'margin-top':'75px',fontFamily: "Nunito",'font-size':'30px'}} as='h2' textAlign='center'>
+                        {this.state.name} {this.state.brand}
                     </Header>
-                    <h2 style={{display: 'flex', justifyContent: 'center'}}>{this.state.brand}</h2>
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <img textAlign='center' style={{display: 'flex', justifyContent: 'center'}} height='400' width='400' 
-                        src={this.state.imageLink}
-                        alt="new"
-                    />
-                    </div>
-                    <h2 style={{display: 'flex', justifyContent: 'center'}}>${this.state.price}</h2>
-                    <h2 style={{display: 'flex', justifyContent: 'center'}}>{this.state.description}</h2>
-                    <h2 style={{backgroundColor: '#ce8ab6',display: 'flex', justifyContent: 'center'}}>People favorited: {this.state.favorites.length}</h2>
 
-                    
-                    <div style={{backgroundColor: '#ce8ab6',display: 'flex', justifyContent: 'center'}}>
-                    <button style={{backgroundColor: '#ce8ab6',display: 'flex', justifyContent: 'center'}} onClick={
-                        () => { 
-                          this.getfavProduct(this.state.productId) 
-                        }
-                      }
-                     className="ui toggle button">Favorite</button>
-                     </div>
+                    <h2 style={{display: 'flex', justifyContent: 'left', fontFamily: "Nunito"}}> </h2>
+
+
+
+                    <div style={{display: 'flex', justifyContent: 'left'}}>
+                        
+                        <img textAlign='left' style={{'margin-top': '50px',display: 'flex', justifyContent: 'center'}} height='400' width='400' 
+                            src={this.state.imageLink}
+                            alt="new"
+                        />
+
+                        <ul style={{'margin-top': '50px','list-style': 'none', fontFamily: "Nunito"}}>
+                            <li><h2 style={{'margin-left': '100px', display: 'flex', justifyContent: 'left', fontFamily: "Nunito"}}>Price: ${this.state.price}</h2></li>                  
+                            <li><p style={{ 'text-align':'left','margin-top':'20px','margin-left': '100px', fontFamily: "Nunito"}}>Description: {this.state.description}</p></li>
+
+
+                            
+
+
+                            <li><button style={{ fontWeight: 'bold','margin-top':'140px','margin-left': '100px',display: 'flex', justifyContent: 'center', fontFamily: "Nunito", fontSize: '25px'}} onClick={
+                                () => { 
+                                    this.getfavProduct(this.state.productId) 
+                                }
+                            }
+                            className="ui toggle button">Favorite</button></li>
+
+                            <li><p style={{'margin-top':'12px','margin-left': '100px', display: 'flex', justifyContent: 'left', fontFamily: "Nunito"}}>Liked by {this.state.favorites.length} users</p></li>
+                        </ul>
+                    </div>
                 </Grid.Column>
             </Grid>
         )

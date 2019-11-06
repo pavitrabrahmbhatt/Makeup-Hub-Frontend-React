@@ -67,6 +67,25 @@ class ShowVegan extends Component {
         <ul>{listedVeganProducts}</ul>
         
 
+        <Grid>
+            
+                <Grid.Column width={4}>
+             
+                </Grid.Column>
+                <Grid.Column width={4}>
+                    <Image src='/images/wireframe/paragraph.png' />
+                </Grid.Column>
+                <Grid.Column width={4}>
+                    <Image src='/images/wireframe/paragraph.png' />
+                </Grid.Column>
+                <Grid.Column width={4}>
+                    <Image src='/images/wireframe/paragraph.png' />
+                </Grid.Column>
+            
+
+            
+        </Grid>
+
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../MainContainer/MainContainer.css'
 import { Button, Form, Grid, Header, Message, Segment} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
@@ -24,7 +25,7 @@ class Login extends Component {
    render(){
       return (
 
-         <Grid verticalAlign='middle' style={{backgroundImage: "url('https://media.giphy.com/media/2YxjQ30CeqDzq/giphy.gif')", height: '100vh'}}textAlign='center'>
+         <Grid verticalAlign='middle' style={{backgroundImage: "url('https://www.fg-a.com/wallpapers/white-stone-1280.jpg')", height: '100vh'}}textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
                <Header as='h2' textAlign='center'>
                   MAKEUP HUB 

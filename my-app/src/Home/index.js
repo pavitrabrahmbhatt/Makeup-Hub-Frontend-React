@@ -51,7 +51,7 @@ class Home extends Component {
 
 
 
-            this.setState({
+            this.setState({ 
                 veganProducts: newList
             })
 
@@ -136,75 +136,18 @@ class Home extends Component {
     }
 
     render() {
-        const listedVeganProducts = this.state.veganProducts.map((product, i) => {
-            console.log(product);
-            return(
-                <div key={i}>
-                <img onClick={
-                    () => { 
-                      this.props.showProduct(product.productId) 
-                    }
-                  }
-                    height='220' width='220' 
-                    src={product.imageLink}
-                    alt={product.name}
-                />                                    
-                </div>
-            )
-        })
-
-      const listedDrugstoreProducts = this.state.drugstoreProducts.map((product, i) => {
-          return(
-              <div key={i}>
-                  <img onClick={
-                      () => { 
-                        this.props.showProduct(product.productId) 
-                      }
-                    }
-                      height='220' width='220' 
-                      src={product.imageLink}
-                      alt={product.name}
-                  />                
-              </div>
-          )
-      })
-
-        const listedLuxuryProducts = this.state.luxuryProducts.map((product, i) => {
-            return(
-                <div key={i}>
-                <img onClick={
-                    () => { 
-                      this.props.showProduct(product.productId) 
-                    }
-                  }
-                    height='220' width='220' 
-                    src={product.imageLink}
-                    alt={product.name}
-                />                    
-                </div>
-            )
-        })
+        
       
         return (    
                         
             <Grid columns={3}>
                 <Grid.Row>
                     <Grid.Column>
-                        <h2 onClick={this.props.showVegan}>Vegan Products</h2>
-                        <ul>{listedVeganProducts}</ul>
-                        <Button onClick={this.props.showVegan}>See all></Button>
+                        <h2 style={{fontFamily: "Nunito"}}onClick={this.props.showVegan}>HOME PAGE</h2>
+                        
+                        
                     </Grid.Column>
-                    <Grid.Column>
-                        <h2 onClick={this.props.showDrugstore}>DrugStore Products</h2>
-                        <ul>{listedDrugstoreProducts}</ul>
-                        <Button onClick={this.props.showDrugstore}>See all></Button>
-                        <Upload uploadProduct={this.uploadProduct} products={this.state.products}/>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <h2 onClick={this.props.showLuxury}>Luxury Products</h2>
-                        <ul>{listedLuxuryProducts}</ul>
-                        <Button onClick={this.props.showLuxury}>See all></Button>
-                    </Grid.Column>
+                    
                 </Grid.Row>   
 </Grid> 
                 

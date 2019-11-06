@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import './MainContainer.css'
 import { Button, Form, Grid, Header, Image, Message, Segment, Label } from 'semantic-ui-react';
 
-import { Menu } from 'semantic-ui-react'
+import { Menu} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 
@@ -100,28 +101,46 @@ class MainContainer extends Component {
 
       // pass user product in to show product too
      
-      <div style={{backgroundColor: '#ce8ab6' }}>
-      <h1 style={{display: 'flex', justifyContent: 'center'}}>Make/Up/Hub</h1>
-      <Menu pointing secondary>
+      <div style={{backgroundColor: '#E8E7E7', height: '100vh'}}>
+      <h1 style={{display: 'flex', justifyContent: 'center', padding: '25px', fontWeight: 'bold', fontFamily: "Nunito"}}>Title of the Site</h1>
+      <h3 style={{display: 'flex', justifyContent: 'center', color:'#807F81', fontFamily: "Nunito"}}>"Some subtitle quote"</h3>
+
+      <Segment inverted>
+      <Menu inverted pointing secondary style={{display: 'flex', justifyContent: 'center', padding: '10px'}} pointing secondary >
+          <Menu.Item onClick={this.showHome}>
+              <img src='https://www.pexels.com/photo/artistic-blossom-bright-clouds-207962/'/>
+              
+          </Menu.Item>
           <Menu.Item
-              name='home'
-              onClick={this.showHome}
+              style={{'font-size': '20px', fontWeight: 'bold'}}
+              name='vegan'
+              onClick={this.showVegan}
+          />
+          
+          <Menu.Item
+          style={{'font-size': '20px', fontWeight: 'bold'}}
+              name='drugstore'
+              onClick={this.showDrugstore}
           />
           <Menu.Item
+          style={{'font-size': '20px', fontWeight: 'bold'}}
+              name='luxury'
+              onClick={this.showLuxury}
+          />
+          <Menu.Item
+          style={{'font-size': '20px', fontWeight: 'bold'}}
               name='profile'
               onClick={this.showProfile}
           />
-          <Menu.Item
-              name='edit profile'
-              onClick={this.editProfile}
-          />
           <Menu.Menu position='right'>
             <Menu.Item
+            style={{'font-size': '20px', fontWeight: 'bold'}}
                 name='logout'
                 onClick={this.handleItemClick}
             />
           </Menu.Menu>
         </Menu>
+        </Segment>
       
 
       
