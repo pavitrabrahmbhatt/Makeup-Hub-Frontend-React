@@ -40,12 +40,12 @@ class ShowLuxury extends Component {
       return(
           <div key={i}>
 
-          <img onClick={
+          <Image onClick={
                   () => { 
                     this.props.showProduct(product.productId) 
                   }
                 }
-                height='220' width='220' 
+                size='medium' circular bordered
                 src={product.imageLink}
                 alt={product.name}
               />
@@ -56,8 +56,31 @@ class ShowLuxury extends Component {
     
     return (
       <div className="App">
-        <h1>Luxury Products</h1>
-        <ul>{listedLuxuryProducts}</ul>     
+        <Header style={{'margin-top':'75px',fontFamily: "Nunito",'font-size':'30px'}} as='h2' textAlign='center'>Luxury Products</Header>
+        <Header style={{'margin-top':'25px','margin-bottom':'75px',fontFamily: "Nunito",'font-size':'20px','color':'#8B8D8B'}} as='h4' textAlign='center'>Click on an image for more information</Header>
+        <Grid columns={5} padded='vertically'textAlign='center' style={{'margin-top': '75px','margin-left':'300px','margin-right':'300px'}}>
+         
+              <Grid.Row>
+                <Grid.Column>
+                  <p>{listedLuxuryProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedLuxuryProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedLuxuryProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedLuxuryProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedLuxuryProducts}</p>
+                </Grid.Column>
+              </Grid.Row>
+
+            
+            </Grid>
+    
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Grid, Header, Message, Segment} from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Message, Segment, Image} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 class Profile extends Component {
@@ -48,15 +48,16 @@ class Profile extends Component {
       const listedProducts = this.state.userFavs.map((product, i) => {
             return(
                 <div key={i}>
-                <img
+                <Image
                   onClick={
                     () => { 
                       this.props.showProduct(product.productId) 
                     }
                   }
-                    height='200' width='200' 
+                    
                     src={this.state.userFavs[i].imageLink}
                     alt='img'
+                    size='medium' circular bordered
                 />
                     
                 </div>
@@ -74,27 +75,32 @@ class Profile extends Component {
 
 
     <Header as='h2' textAlign='center' style={{'margin-top':'75px',fontFamily: "Nunito",'font-size':'30px'}}>
-                      {this.state.username.toUpperCase()}'s Favorites
+                      Welcome back, {this.state.username.toUpperCase()}!
                    </Header>
-         <Grid columns={5} padded='vertically'textAlign='center' style={{'margin': '75px'}}>
+                   <Header style={{'margin-top':'25px','margin-bottom':'75px',fontFamily: "Nunito",'font-size':'20px','color':'#8B8D8B'}} as='h4' textAlign='center'>View your favorites below</Header>
+         <Grid columns={5} padded='vertically'textAlign='center' style={{'margin-top': '75px','margin-left':'300px','margin-right':'300px'}}>
          
-            <Grid.Column >   
-              <p>{listedProducts}</p>
-            </Grid.Column>
-            <Grid.Column >   
-              <p>{listedProducts}</p>
-            </Grid.Column>
-            <Grid.Column >   
-              <p>{listedProducts}</p>
-            </Grid.Column>
-            <Grid.Column >   
-              <p>{listedProducts}</p>
-            </Grid.Column>
-            <Grid.Column >   
-              <p>{listedProducts}</p>
-            </Grid.Column>
+              <Grid.Row>
+                <Grid.Column>
+                  <p>{listedProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedProducts}</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p>{listedProducts}</p>
+                </Grid.Column>
+              </Grid.Row>
+
             
-         </Grid>
+            </Grid>
+
 </div>
 
 

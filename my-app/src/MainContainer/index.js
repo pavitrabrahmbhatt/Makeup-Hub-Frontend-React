@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MainContainer.css'
-import { Button, Form, Grid, Header, Image, Message, Segment, Label } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Label} from 'semantic-ui-react';
 
 import { Menu} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
@@ -101,14 +101,14 @@ class MainContainer extends Component {
 
       // pass user product in to show product too
      
-      <div style={{backgroundColor: '#E8E7E7', height: '100vh'}}>
-      <h1 style={{display: 'flex', justifyContent: 'center', padding: '25px', fontWeight: 'bold', fontFamily: "Nunito"}}>Title of the Site</h1>
-      <h3 style={{display: 'flex', justifyContent: 'center', color:'#807F81', fontFamily: "Nunito"}}>"Some subtitle quote"</h3>
+      <div style={{backgroundColor: '#E8E7E7', height: '100%'}}>
+      <h1 style={{display: 'flex', justifyContent: 'center', 'padding':'25px', fontWeight: 'bold', fontFamily: "Nunito",fontSize:'50px'}}>Makeup Hub</h1>
+      <h3 style={{display: 'flex', justifyContent: 'center', color:'#8B8D8B', fontFamily: "Nunito",'margin-bottom':'75px',fontSize:'23px'}}>"Discover your everyday favorites!"</h3>
 
       <Segment inverted>
       <Menu inverted pointing secondary style={{display: 'flex', justifyContent: 'center', padding: '10px'}} pointing secondary >
           <Menu.Item onClick={this.showHome}>
-              <img src='https://www.pexels.com/photo/artistic-blossom-bright-clouds-207962/'/>
+              <Image circular size='mini' src='https://react.semantic-ui.com/images/wireframe/white-image.png'/>
               
           </Menu.Item>
           <Menu.Item

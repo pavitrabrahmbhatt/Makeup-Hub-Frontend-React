@@ -22,10 +22,14 @@ class Login extends Component {
       this.props.login(this.state);
    }
 
+
+
+
+
    render(){
       return (
 
-         <Grid verticalAlign='middle' style={{backgroundImage: "url('https://www.fg-a.com/wallpapers/white-stone-1280.jpg')", height: '100vh'}}textAlign='center'>
+         <Grid verticalAlign='middle' style={{backgroundColor: '#E8E7E7', height: '100vh'}}textAlign='center'>
             <Grid.Column style={{maxWidth: 450}}>
                <Header as='h2' textAlign='center'>
                   MAKEUP HUB 

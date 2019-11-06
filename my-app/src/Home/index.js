@@ -138,21 +138,28 @@ class Home extends Component {
     render() {
         
       
-        return (    
-                        
-            <Grid columns={3}>
-                <Grid.Row>
-                    <Grid.Column>
-                        <h2 style={{fontFamily: "Nunito"}}onClick={this.props.showVegan}>HOME PAGE</h2>
-                        
-                        
-                    </Grid.Column>
+        return ( 
+
+
                     
-                </Grid.Row>   
-</Grid> 
-                
+        <div>    
+            <Header style={{'margin-top':'75px',fontFamily: "Nunito",'font-size':'30px'}} as='h2' textAlign='center'>Designed for your needs</Header>
+            <Header style={{'margin-top':'25px','margin-bottom':'75px',fontFamily: "Nunito",'font-size':'20px','color':'#8B8D8B'}} as='h4' textAlign='center'>Choose a category below</Header>
+
+
+
             
-            
+    <Image.Group size='medium'>
+      
+   
+    
+ 
+            <Image style={{'margin-left':'466px'}} size='medium' src='https://media.giphy.com/media/xUOwGiSIwx6HzCSeIg/giphy.gif' onClick={this.props.showVegan}></Image>
+            <Image style={{'margin':'25px'}}size='medium' src='https://media.giphy.com/media/2Ylk0qCKnSULlNY3YA/giphy.gif' onClick={this.props.showDrugstore}></Image>
+
+            <Image style={{'margin-right':'200px'}}size='medium' src='https://media.giphy.com/media/tTutsU63rnHC8/giphy.gif' onClick={this.props.showLuxury}></Image>
+             </Image.Group>
+        </div>
         );
     }
 }
